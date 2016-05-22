@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>oef 5.1</title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="main.css">
+        <script src="http://code.jquery.com/jquery-1.12.1.min.js"> </script>
+        <script>
+        $( document ).ready(function() {
+            $("#invoer").on('touchstart', function () {
+                $("#uitvoer").text("start");
+                
+                
+            });
+            $("#invoer").on('touchend', function () {
+                $("#uitvoer").text("end");
+                
+            });
+            
+        });
+        </script>
+    </head>
+    <body>
+    
+        <input type="text" id="invoer">
+        <label id="uitvoer"></label>
+        
+        
+        
+        
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GETTING STARTED WITH SQL</title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="main.css">
+        <script src="http://code.jquery.com/jquery-1.12.1.min.js"> </script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"> </script>
+        
+        <script type="text/javascript">
+            
+        $( document ).ready(function() {
+		
+        var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+        var msg;
+        var e_naam;
+        var e_score;
+            
+            function toonDb()
+            {
+                db.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM HIGHSCORES', [], function (tx, results) {
+               var len = results.rows.length, i;
+               msg = "<p>Gevonde rijen: " + len + "</p>";
+                /*Toon het aantal gevonde rijen */
+               document.querySelector('#status').innerHTML +=  msg;
+				/*Zet alle gevonde rijen op het scherm */	
+               for (i = 0; i < len ; i++){
+                  msg = "<p><b>" +  results.rows.item(i).naam + ": " +results.rows.item(i).score + "</b></p>";
+                  document.querySelector('#status').innerHTML +=  msg;
+               }
+            }, null);
+            });
+                
+            }
+            
+            //toon de database
+            toonDb();
+            
+            //er word geklickt op de knop
+            $( "#knop" ).click(function() {
+               
+                
+                //geef de variabelen een waarde
+                e_naam = $("#invoerNaam").val();
+                e_score = $("#invoerScore").val();                
+                
+                //
+                
+                db.transaction(function (tx) {
+                     /*Verwijder table LOGS voor de test */
+                    /*tx.executeSql('DROP TABLE HIGHSCORES;');*/
+                    /*Maak table HIGHSCORE aan */
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS HIGHSCORES (naam, score)');
+                    /*Voeg content toe aan tabel */
+                    tx.executeSql('INSERT INTO HIGHSCORES (naam, score) VALUES (?, ?)', [e_naam,e_score]);     
+
+                    /* Geef een bericht dat alles goed is opgeslagen*/
+                    msg = '<p>De gegevens zijn succesvol opgeslagen</p>';
+                    document.querySelector('#status').innerHTML =  msg;
+                });
+                //toon database
+                toonDb();
+
+         
+               
+                
+            });
+        });
+            
+            
+        
+			
+         
+			
+      </script>
+        
+    </head>
+    
+    <body>
+        <input type="text" id="invoerNaam">
+        <input type="number" id="invoerScore">
+        <a href= "#" id="knop">Sla op</a>
+      <div id="status" >Status Message</div>
+   </body>
+    
+</html>

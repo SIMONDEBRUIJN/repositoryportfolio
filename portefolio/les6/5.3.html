@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>oef 5.1</title>
+        <meta name="description" content="">
+        <style>
+        body
+            {
+                visibility: hidden;                
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-1.12.1.min.js"> </script>
+        <script>
+        $( document ).ready(function() {
+            // Animation complete           
+            
+            
+            $("body").css("visibility","visible");
+            
+            $("img").click(function () {
+                /*$("img").css("visibility","hidden");*/
+                var nieuweSrc = "http://img.mobypicture.com/ac9221b42e4852370dde2768686b999e_large.jpg";
+                $("img").attr('src',nieuweSrc);
+                
+            });
+            
+        });
+        </script>
+    </head>
+    <body>
+        <div style="text-align:center">	
+            <img src="http://img.mobypicture.com/4784e2f8d760413b945c4e135be20278_large.jpg" >
+        </div>
+
+    
+        
+        
+        
+        
+        
+    </body>
+</html>

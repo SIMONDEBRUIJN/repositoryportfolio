@@ -1,0 +1,6 @@
+Omschrijving Opdracht 2 : uitgebreide individuele opdracht
+
+Ik ben vanplan om een game te ontwikkelen met javascript. 
+Het zal een tijdgebaseerd spel zijn met code's om te kraken. 
+Het idee achter de game is namelijk dat je een bom moet uitschakelen binnen de tijd
+, anders ontploft de bom en heb je verloren.
